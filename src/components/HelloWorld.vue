@@ -1,21 +1,21 @@
 <template>
-  <h1 class="header">{{ msg }}</h1>
+  <h1 class="header">{{ msg }}-23131</h1>
 </template>
 <script lang="ts">
-  import { ref, defineComponent } from 'vue';
+import { ref, defineComponent } from 'vue';
 
-  export default defineComponent({
-    name: 'HelloWord',
-    setup() {
-      const msg = ref('1214');
-      return {
-        msg,
-      };
-    },
-  });
+export default defineComponent({
+  name: 'HelloWord',
+  setup() {
+    const msg = ref('1214');
+    return {
+      msg,
+    };
+  },
+});
 </script>
 <style lang="less" scoped>
-  .header {
-    color: @primary-color;
-  }
+.header {
+  color: @primary-color;
+}
 </style>
