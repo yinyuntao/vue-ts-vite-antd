@@ -1,20 +1,28 @@
 <template>
-  <div :class="prefixCls">
+  <div :class="prefixCls" class="w-screen h-screen overflow-y-hidden">
     <p>121515151</p>
-    <div :class="`${prefixCls}-container`">
-      <div :class="`${prefixCls}-container-left`">
-        <div :class="`${prefixCls}-app-logo`">
+    <div :class="`${prefixCls}-container`" class="h-screen flex">
+      <div :class="`${prefixCls}-container-left`" class="w-1/2 flex-col flex relative">
+        <div :class="`${prefixCls}-app-logo`" class="flex item-center absolute">
           <img src="../../assets/images/logo.png" alt="" srcset="" />
-          <span>vite admin</span>
+          <span class="text-white font-bold">Vite Admin</span>
+        </div>
+        <div :class="`${prefixCls}-app-content`">
+          <img class="w-1/2" src="../../assets/svg/login-box-bg.svg" alt="" srcset="" />
+          <p class="content text-white font-bold">开箱即用的中后台管理系统</p>
+          <p class="detail text-white text-sm">输入你的个人详情信息并使用</p>
         </div>
       </div>
-      <div :class="`${prefixCls}-container-right`"></div>
+      <div :class="`${prefixCls}-container-right`" class="w-1/2">
+        <LoginForm />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
   import { useDesign } from '/@/style/var/class';
+  import LoginForm from './loginForm.vue';
 
   const { prefixCls } = useDesign('login'); //引入默认类的变量
 </script>
@@ -23,8 +31,6 @@
   @prefix-cls: ~'@{namespace}-login';
 
   .@{prefix-cls}{
-    width: 100vw;
-    height: 100vh;
     &::before {
       background-image: url(/@/assets/svg/login-bg.svg);
       position: absolute;
@@ -40,14 +46,9 @@
     }
 
     &-container {
-      // height: 100vh;
       margin: 0 auto;
-      display: flex;
       @media (min-width: 1200px) {
-        max-width: 1200px;
-      }
-      &-left,&-right {
-        width: 50%;
+        max-width: 1520px;
       }
     }
 
@@ -55,17 +56,24 @@
     &-app-logo {
       width: 60%;
       height: 80px;
-      display: flex;
-      align-items: center;
+      top: 12px;
+      left: 0;
       img {
         width: 48px;
       }
       span {
-        color: #fff;
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 30px;
         margin-left: 10px;
       }
     }
+    &-app-content {
+      margin-top: auto;
+      margin-bottom: auto;
+      .content {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    }
+
   }
 </style>

@@ -5,6 +5,7 @@ import App from './App.vue';
 //antd 3.0版本按需引入组件需要使用vite 可以使用 unPlugin-vue-components  按需加载,但是无法处理非组件模块
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.less';
+import '/@/style/var/class.less';
 
 import { setupStore } from '/@/store/index';
 import { setupRouter } from '/@/router/index';
