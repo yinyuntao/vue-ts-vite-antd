@@ -9,6 +9,7 @@ import '/@/style/var/class.less';
 
 import { setupStore } from '/@/store/index';
 import { setupRouter } from '/@/router/index';
+import { setupI18n } from '/@/locales/setupI18n';
 
 function initConfig() {
   const app = createApp(App);
@@ -17,6 +18,8 @@ function initConfig() {
   setupStore(app); //全局配置状态管理
 
   setupRouter(app); //初始化路由
+
+  setupI18n(app);
 
   app.mount('#app');
 }

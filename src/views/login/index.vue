@@ -1,6 +1,13 @@
 <template>
   <div :class="prefixCls" class="w-screen h-screen overflow-y-hidden">
-    <p>121515151</p>
+    <div class="flex justify-end p-10">
+      <Language
+        :dropMenuList="localList"
+        @handleMenuEvent="handleMenuEvent"
+        :selectedKeys="selectedKeys"
+      />
+    </div>
+
     <div :class="`${prefixCls}-container`" class="h-screen flex">
       <div :class="`${prefixCls}-container-left`" class="w-1/2 flex-col flex relative">
         <div :class="`${prefixCls}-app-logo`" class="flex item-center absolute">
@@ -9,8 +16,8 @@
         </div>
         <div :class="`${prefixCls}-app-content`">
           <img class="w-1/2" src="../../assets/svg/login-box-bg.svg" alt="" srcset="" />
-          <p class="content text-white font-bold">开箱即用的中后台管理系统</p>
-          <p class="detail text-white text-sm">输入你的个人详情信息并使用</p>
+          <p class="content text-white font-bold">{{ t('sys.login.signInTitle') }}</p>
+          <p class="detail text-white text-sm">{{ t('sys.login.signInDesc') }}</p>
         </div>
       </div>
       <div :class="`${prefixCls}-container-right`" class="w-1/2">
@@ -23,8 +30,32 @@
 <script lang="ts" setup>
   import { useDesign } from '/@/style/var/class';
   import LoginForm from './loginForm.vue';
+  import Language from './language.vue';
+  // import { useLocaleStore } from '/@/store/modules/locale';
+  import { useI18n } from '/@/hooks/web/useI18n';
+  import { localList } from '/@/settings/localeSetting';
+  import { unref, ref } from 'vue';
+  import { useLocale } from '/@/locales/useLocale';
+  import { LocaleType } from '/#/config';
 
+  const props = defineProps({
+    reload: { type: Boolean },
+  });
   const { prefixCls } = useDesign('login'); //引入默认类的变量
+  const { getLocale, changeLocale } = useLocale();
+  // const localeStore = useLocaleStore();
+  const { t } = useI18n();
+  const selectedKeys = ref<string[]>([]);
+  function handleMenuEvent(menu) {
+    if (unref(getLocale) === menu.event) return;
+    toggleLocale(menu.event as string);
+  }
+
+  async function toggleLocale(lang: LocaleType | string) {
+    await changeLocale(lang as LocaleType);
+    selectedKeys.value = [lang as string];
+    props.reload && location.reload();
+  }
 </script>
 <style lang="less" scoped>
   //namespace 默认的类变量前缀
