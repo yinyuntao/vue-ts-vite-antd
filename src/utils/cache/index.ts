@@ -1,5 +1,6 @@
 import { createStorage as create, CreateStorageParams } from './storageCache';
 import { getStorageShortName } from '/@/utils/env';
+//DEFAULT_CACHE_TIME 是用来存储过期时间的
 import { enableStorageEncryption, DEFAULT_CACHE_TIME } from '/@/settings/encryptionSetting';
 
 export type Options = Partial<CreateStorageParams>;

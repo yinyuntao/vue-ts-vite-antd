@@ -20,7 +20,10 @@
           <p class="detail text-white text-sm">{{ t('sys.login.signInDesc') }}</p>
         </div>
       </div>
-      <div :class="`${prefixCls}-container-right`" class="w-1/2">
+      <div
+        :class="`${prefixCls}-container-right`"
+        class="w-1/2 flex item-center justify-center flex-col"
+      >
         <LoginForm />
       </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <a-dropdown :trigger="['click']" v-model:visible="visible">
     <a-button type="primary" @click.prevent>
-      <template #icon><MenuOutlined /></template>
+      <template #icon><i class="iconfont icon-vite-project-language text-lg"></i></template>
     </a-button>
     <template #overlay>
       <a-menu :selectedKeys="selectedKeys">

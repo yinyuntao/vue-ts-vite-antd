@@ -7,5 +7,6 @@ export function generateModifyVars(dark = false) {
   return {
     ...modifyVars,
     hack: `${modifyVars.hack} @import (reference) "${resolve('src/style/index.less')}";`,
+    'primary-color': '#0960bd', //覆盖样式
   };
 }
