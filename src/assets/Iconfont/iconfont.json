@@ -1,0 +1,16 @@
+{
+  "id": "3250406",
+  "name": "vite-project",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3309421",
+      "name": "切换语言",
+      "font_class": "vite-project-language",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    }
+  ]
+}
