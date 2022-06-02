@@ -466,6 +466,18 @@
   resolved "https://registry.npmmirror.com/@vue/shared/download/@vue/shared-3.2.28.tgz#5b0b1840432031d0ea1adff633b356a503e87048"
   integrity sha512-eMQ8s9j8FpbGHlgUAaj/coaG3Q8YtMsoWL/RIHTsE3Ex7PUTyr7V91vB5HqWB5Sn8m4RXTHGO22/skoTUYvp0A==
 
+"@zxcvbn-ts/core@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmmirror.com/@zxcvbn-ts/core/-/core-2.0.1.tgz#5e6183d85af7f395ef410ba7a700f8af0ae1cf2a"
+  integrity sha512-i3viYattwORK5liqS/d9WaIWSLki75oKVog5Elg9Ls9d8L6zKLwpAkj6PT/P4LZqJHIVRPnKjgajpP6SLerr6Q==
+  dependencies:
+    fastest-levenshtein "1.0.12"
+
+"@zxcvbn-ts/language-common@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmmirror.com/@zxcvbn-ts/language-common/-/language-common-2.0.1.tgz#01c371a64e86de417c317b4443aaa0a0f07f917b"
+  integrity sha512-P+v5MA/UNc9nb3FEOEoDgTyIGQc2vLc6m04pdf5YyuNOzrL0iNANhECk2TUp62JbrjouJVodqhMH0j1a8/24Bg==
+
 acorn-jsx@^5.2.0, acorn-jsx@^5.3.1:
   version "5.3.2"
   resolved "https://registry.npmmirror.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -1074,6 +1086,11 @@ fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmmirror.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
+
+fastest-levenshtein@1.0.12:
+  version "1.0.12"
+  resolved "https://registry.npmmirror.com/fastest-levenshtein/-/fastest-levenshtein-1.0.12.tgz#9990f7d3a88cc5a9ffd1f1745745251700d497e2"
+  integrity sha512-On2N+BpYJ15xIC974QNVuYGMOlEVt4s0EOI3wwMqOmK1fdDY+FN/zltPV8vosq4ad4c/gJ1KHScUn/6AWIgiow==
 
 fastq@^1.6.0:
   version "1.13.0"

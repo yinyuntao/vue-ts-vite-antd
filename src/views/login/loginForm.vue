@@ -1,30 +1,52 @@
 <template>
   <!-- 登录页面表单 -->
   <LoginFormTitle v-show="getShow" />
-  <a-form v-if="getShow" :model="form" class="w-1/2" :class="`${prefixCls}-form`">
-    <a-form-item label="">
-      <a-input v-model:value="form.account"></a-input>
+  <a-form
+    v-if="getShow"
+    :model="form"
+    class="w-1/2"
+    :class="`${prefixCls}-form`"
+    ref="loginRef"
+    :rules="getFormRules"
+  >
+    <a-form-item label="" name="account">
+      <a-input v-model:value="form.account" :placeholder="t('sys.login.userName')"></a-input>
     </a-form-item>
-    <a-form-item label="">
-      <a-input-password v-model:value="form.password"></a-input-password>
+    <a-form-item label="" name="password">
+      <a-input-password
+        v-model:value="form.password"
+        :placeholder="t('sys.login.password')"
+      ></a-input-password>
     </a-form-item>
     <div class="flex justify-between">
-      <a-checkbox v-model:checked="rememberVal">记住我</a-checkbox>
-      <a href="#" @click="setLoginState(LoginStateEnum.RESET_PASSWORD)">忘记密码？</a>
+      <a-checkbox class="lh-32" v-model:checked="rememberVal">{{
+        t('sys.login.rememberMe')
+      }}</a-checkbox>
+      <a-button class="p-0" type="link" @click="setLoginState(LoginStateEnum.RESET_PASSWORD)">{{
+        t('sys.login.forgetPassword')
+      }}</a-button>
     </div>
-    <a-button block type="primary" size="large" class="my-10">登录</a-button>
+    <a-button block type="primary" size="large" class="my-10" @click="handleLogin">{{
+      t('sys.login.loginButton')
+    }}</a-button>
     <a-row class="flex justify-between my-10">
       <a-col :md="8" :xs="24">
-        <a-button block @click="setLoginState(LoginStateEnum.MOBILE)">手机登录</a-button>
+        <a-button block @click="setLoginState(LoginStateEnum.MOBILE)">{{
+          t('sys.login.mobileSignInFormTitle')
+        }}</a-button>
       </a-col>
       <a-col :md="8" :xs="24">
-        <a-button block @click="setLoginState(LoginStateEnum.QR_CODE)">二维码登录</a-button>
+        <a-button block @click="setLoginState(LoginStateEnum.QR_CODE)">
+          {{ t('sys.login.qrSignInFormTitle') }}</a-button
+        >
       </a-col>
       <a-col :md="7" :xs="24">
-        <a-button block @click="setLoginState(LoginStateEnum.REGISTER)">注册</a-button>
+        <a-button block @click="setLoginState(LoginStateEnum.REGISTER)">{{
+          t('sys.login.registerButton')
+        }}</a-button>
       </a-col>
     </a-row>
-    <a-divider :class="`${prefixCls}-form-way`">其他登录方式</a-divider>
+    <a-divider :class="`${prefixCls}-form-way`">{{ t('sys.login.otherSignIn') }}</a-divider>
 
     <a-row class="flex justify-around" :class="`${prefixCls}-form-sign-in-way`">
       <GithubOutlined />
@@ -47,20 +69,29 @@
     GoogleCircleFilled,
     TwitterCircleFilled,
   } from '@ant-design/icons-vue';
-  import { useLoginState, LoginStateEnum } from './useLogin';
-
+  import { useLoginState, LoginStateEnum, useFormRules, useFormValid } from './useLogin';
+  import { useI18n } from '/@/hooks/web/useI18n';
   const { prefixCls } = useDesign('login'); //引入默认类的变量
 
   const form = reactive({
     account: 'vite-project',
     password: '123456',
   });
-
+  const loginRef = ref();
+  const { t } = useI18n();
   const rememberVal = ref(false);
+  const { getFormRules } = useFormRules();
+  const { validForm } = useFormValid(loginRef);
 
   const { setLoginState, getLoginState } = useLoginState();
 
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN); //当前是否显示登录页面
+
+  async function handleLogin() {
+    const data = await validForm();
+    if (!data) return;
+    console.log(data);
+  }
 </script>
 
 <style lang="less" scoped>

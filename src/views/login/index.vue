@@ -25,6 +25,10 @@
         class="w-1/2 flex item-center justify-center flex-col"
       >
         <LoginForm />
+        <MobileForm />
+        <QrCodeForm />
+        <RegisterForm />
+        <ForgetPasswordForm />
       </div>
     </div>
   </div>
@@ -33,7 +37,11 @@
 <script lang="ts" setup>
   import { useDesign } from '/@/style/var/class';
   import LoginForm from './loginForm.vue';
+  import MobileForm from './MobileForm.vue';
+  import QrCodeForm from './QrCodeForm.vue';
+  import RegisterForm from './RegisterForm.vue';
   import Language from './language.vue';
+  import ForgetPasswordForm from './ForgetPasswordForm.vue';
   // import { useLocaleStore } from '/@/store/modules/locale';
   import { useI18n } from '/@/hooks/web/useI18n';
   import { localList } from '/@/settings/localeSetting';
